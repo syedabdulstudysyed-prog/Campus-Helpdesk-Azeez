@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presidency University Campus Helpdesk</title>
+  <meta name="description" content="Local campus helpdesk for Presidency University students covering academics, attendance, examinations, placements, library, hostel, administration, and events." />
+  <meta property="og:title" content="Presidency University Campus Helpdesk" />
+  <meta property="og:description" content="Local campus helpdesk for Presidency University students covering academics, attendance, examinations, placements, library, hostel, administration, and events." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-canvas: #F8FAFC;
+      --surface-card: #FFFFFF;
+      --surface-subtle: #F1F5F9;
+      --border-hairline: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --navy-brand: #0F2942;
+      --navy-hover: #163A5C;
+      --teal-accent: #0E7490;
+      --teal-soft: #ECFEFF;
+      --gold-accent: #D97706;
+      --error-bg: #FEF2F2;
+      --error-border: #FECACA;
+      --error-text: #991B1B;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.04);
+      --transition-fast: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg-canvas);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-primary);
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    button, input {
+      font-family: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--teal-accent);
+      outline-offset: 2px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header & Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background-color: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      height: 68px;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--navy-brand);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .brand-crest {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-link {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding: 6px 2px;
+      border-bottom: 2px solid transparent;
+      transition: color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--navy-brand);
+      border-bottom-color: var(--teal-accent);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 8px 18px;
+      border: none;
+      border-radius: var(--radius-sm);
+      background-color: var(--navy-brand);
+      color: #FFFFFF;
+      font-size: 0.875rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--navy-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 8px 16px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      background-color: var(--surface-card);
+      color: var(--text-primary);
+      font-size: 0.875rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--surface-subtle);
+      border-color: #94A3B8;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-sm);
+      background-color: var(--surface-card);
+      color: var(--navy-brand);
+      cursor: pointer;
+    }
+
+    .mobile-drawer {
+      display: none;
+      border-top: 1px solid var(--border-hairline);
+      background-color: var(--surface-card);
+      padding: 12px 24px 20px;
+    }
+
+    .mobile-drawer.open {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mobile-drawer a {
+      padding: 10px 4px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--surface-subtle);
+    }
+
+    /* Hero / Welcome Section */
+    .hero-section {
+      padding: 48px 0 36px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--teal-accent);
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3.6vw, 3rem);
+      font-weight: 700;
+      color: var(--navy-brand);
+      text-wrap: balance;
+      margin-bottom: 16px;
+    }
+
+    .hero-description {
+      font-size: 1.0625rem;
+      color: var(--text-secondary);
+      max-width: 58ch;
+      margin-bottom: 24px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .hero-visual-card {
+      background-color: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .hero-visual-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+    }
+
+    .overview-strip {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background-color: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .overview-item {
+      padding: 18px 22px;
+      border-right: 1px solid var(--border-hairline);
+    }
+
+    .overview-item:last-child {
+      border-right: none;
+    }
+
+    .overview-value {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1.125rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--navy-brand);
+      margin-bottom: 4px;
+    }
+
+    .overview-label {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    /* Section Commons */
+    .section-block {
+      padding: 40px 0;
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+      font-weight: 700;
+      color: var(--navy-brand);
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      max-width: 65ch;
+    }
+
+    /* Categories Grid */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .category-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      width: 100%;
+      padding: 20px;
+      background-color: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .category-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--teal-accent);
+      box-shadow: var(--shadow-card);
+    }
+
+    .category-card.active {
+      border-color: var(--navy-brand);
+      background-color: #F0F9FF;
+    }
+
+    .category-icon-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: var(--surface-subtle);
+      color: var(--navy-brand);
+      margin-bottom: 14px;
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .category-card:hover .category-icon-box,
+    .category-card.active .category-icon-box {
+      background-color: var(--navy-brand);
+      color: #FFFFFF;
+    }
+
+    .category-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy-brand);
+      margin-bottom: 6px;
+    }
+
+    .category-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+
+    .category-action {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--teal-accent);
+    }
+
+    /* Chatbot Workspace */
+    .chat-layout {
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .chat-sidebar {
+      background-color: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sidebar-heading {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy-brand);
+    }
+
+    .sidebar-note {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .suggested-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .suggested-btn {
+      text-align: left;
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      line-height: 1.4;
+      cursor: pointer;
+      transition: background-color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .suggested-btn:hover {
+      background-color: #F0F9FF;
+      border-color: var(--teal-accent);
+    }
+
+    .sidebar-divider {
+      border: none;
+      border-top: 1px solid var(--border-hairline);
+      margin: 4px 0;
+    }
+
+    .sidebar-tip-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--navy-brand);
+      margin-bottom: 4px;
+    }
+
+    .chat-panel {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      min-height: 540px;
+      max-height: 640px;
+    }
+
+    .chat-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      background-color: var(--navy-brand);
+      color: #FFFFFF;
+    }
+
+    .chat-assistant-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .assistant-avatar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      flex-shrink: 0;
+    }
+
+    .assistant-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .assistant-subtitle {
+      font-size: 0.8125rem;
+      color: #CBD5E1;
+    }
+
+    .btn-clear {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 36px;
+      padding: 6px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: var(--radius-sm);
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #FFFFFF;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+    }
+
+    .btn-clear:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background-color: #F8FAFC;
+    }
+
+    .message-row {
+      display: flex;
+      flex-direction: column;
+      max-width: 82%;
+      animation: fadeSlideUp 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .message-row.user {
+      align-self: flex-end;
+      align-items: flex-end;
+    }
+
+    .message-row.ai {
+      align-self: flex-start;
+      align-items: flex-start;
+    }
+
+    .message-sender {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      padding: 0 4px;
+    }
+
+    .message-bubble {
+      padding: 13px 16px;
+      border-radius: 14px;
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      word-wrap: break-word;
+    }
+
+    .message-row.user .message-bubble {
+      background-color: var(--navy-brand);
+      color: #FFFFFF;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message-row.ai .message-bubble {
+      background-color: var(--surface-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border-hairline);
+      border-bottom-left-radius: 4px;
+    }
+
+    .message-row.error .message-bubble {
+      background-color: var(--error-bg);
+      color: var(--error-text);
+      border: 1px solid var(--error-border);
+      border-bottom-left-radius: 4px;
+    }
+
+    .message-bubble p + p {
+      margin-top: 8px;
+    }
+
+    .message-bubble ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    .message-bubble li + li {
+      margin-top: 4px;
+    }
+
+    .message-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 5px;
+      padding: 0 4px;
+      font-size: 0.75rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-muted);
+    }
+
+    .retry-btn {
+      padding: 2px 10px;
+      border: 1px solid #FCA5A5;
+      border-radius: 6px;
+      background-color: #FFFFFF;
+      color: var(--error-text);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+    }
+
+    .retry-btn:hover {
+      background-color: #FEE2E2;
+    }
+
+    /* Loading Dots */
+    .typing-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 2px;
+    }
+
+    .typing-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--teal-accent);
+      animation: typingBounce 1.1s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(2) {
+      animation-delay: 0.16s;
+    }
+
+    .typing-dot:nth-child(3) {
+      animation-delay: 0.32s;
+    }
+
+    .typing-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-left: 4px;
+    }
+
+    /* Chat Input Area */
+    .chat-input-form {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background-color: var(--surface-card);
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .chat-input {
+      flex: 1;
+      min-width: 0;
+      min-height: 44px;
+      padding: 10px 14px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-size: 0.9375rem;
+      transition: border-color var(--transition-fast), background-color var(--transition-fast);
+    }
+
+    .chat-input:focus {
+      outline: none;
+      border-color: var(--teal-accent);
+      background-color: #FFFFFF;
+    }
+
+    .chat-send-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: var(--radius-sm);
+      background-color: var(--teal-accent);
+      color: #FFFFFF;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color var(--transition-fast), opacity var(--transition-fast);
+    }
+
+    .chat-send-btn:hover:not(:disabled) {
+      background-color: #0C5F76;
+    }
+
+    .chat-send-btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    /* Knowledge Base Reference */
+    .kb-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .kb-item {
+      padding: 18px 20px;
+      background-color: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+    }
+
+    .kb-item-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy-brand);
+      margin-bottom: 6px;
+    }
+
+    .kb-item-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Footer */
+    .site-footer {
+      margin-top: 32px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border-hairline);
+      background-color: var(--surface-card);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes typingBounce {
+      0%, 80%, 100% {
+        transform: scale(0.7);
+        opacity: 0.45;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      .message-row,
+      .typing-dot {
+        animation: none;
+      }
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .chat-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .chat-sidebar {
+        order: 2;
+      }
+
+      .chat-panel {
+        order: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .header-inner {
+        height: 60px;
+        gap: 12px;
+      }
+
+      .nav-links,
+      .header-actions .btn-primary {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+
+      .hero-section {
+        padding: 28px 0 24px;
+      }
+
+      .overview-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .overview-item {
+        border-right: none;
+        border-bottom: 1px solid var(--border-hairline);
+      }
+
+      .overview-item:last-child {
+        border-bottom: none;
+      }
+
+      .categories-grid,
+      .kb-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .message-row {
+        max-width: 92%;
+      }
+
+      .chat-panel {
+        min-height: 460px;
+        max-height: 580px;
+      }
+
+      .chat-send-btn {
+        padding: 10px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="brand-link" aria-label="Presidency University Campus Helpdesk Home">
+        <svg class="brand-crest" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <rect width="40" height="40" rx="10" fill="#0F2942"/>
+          <path d="M20 7L31 12V20.5C31 26.8 26.2 31.8 20 33.5C13.8 31.8 9 26.8 9 20.5V12L20 7Z" stroke="#F59E0B" stroke-width="1.8"/>
+          <path d="M14.5 18.5H25.5M16.5 22.5H23.5M20 14.5V26.5" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <span>Presidency University</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#categories" class="nav-link">Categories</a>
+        <a href="#assistant" class="nav-link">Campus Helpdesk</a>
+        <a href="#knowledge-base" class="nav-link">Knowledge Base</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="btn-primary" id="header-ask-btn">Ask a Question</button>
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Toggle navigation menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-drawer" id="mobile-drawer">
+      <a href="#home" class="mobile-nav-link">Home</a>
+      <a href="#categories" class="mobile-nav-link">Categories</a>
+      <a href="#assistant" class="mobile-nav-link">Campus Helpdesk</a>
+      <a href="#knowledge-base" class="mobile-nav-link">Knowledge Base</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Welcome / Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <p class="hero-eyebrow">Presidency University · Student Campus Helpdesk</p>
+            <h1 class="hero-title">Instant guidance for every campus question</h1>
+            <p class="hero-description">
+              Ask questions in natural language about academics, attendance, examinations, placements, library services, hostel complaints, administration, and university events—grounded strictly in official campus guidance.
+            </p>
+            <div class="hero-cta-row">
+              <button type="button" class="btn-primary" id="hero-start-btn">Start Asking</button>
+              <a href="#categories" class="btn-secondary">Browse 8 Categories</a>
+            </div>
+          </div>
+
+          <div class="hero-visual-card">
+            <svg class="hero-visual-svg" viewBox="0 0 520 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Presidency University Campus Helpdesk Overview Illustration">
+              <rect width="520" height="320" rx="12" fill="#0F2942"/>
+              <circle cx="450" cy="56" r="90" fill="#0E7490" fill-opacity="0.22"/>
+              <circle cx="80" cy="280" r="110" fill="#D97706" fill-opacity="0.14"/>
+
+              <!-- Stylized University Campus Pillars -->
+              <rect x="38" y="218" width="444" height="14" rx="4" fill="#1E3A5F"/>
+              <rect x="64" y="132" width="18" height="86" rx="3" fill="#CBD5E1"/>
+              <rect x="114" y="132" width="18" height="86" rx="3" fill="#CBD5E1"/>
+              <rect x="164" y="132" width="18" height="86" rx="3" fill="#CBD5E1"/>
+              <path d="M46 132L123 86L200 132H46Z" fill="#F8FAFC"/>
+              <rect x="108" y="160" width="30" height="58" rx="3" fill="#0E7490"/>
+
+              <!-- Assistant Chat Preview Card inside Graphic -->
+              <rect x="234" y="52" width="248" height="156" rx="12" fill="#FFFFFF"/>
+              <rect x="252" y="72" width="142" height="12" rx="6" fill="#0F2942"/>
+              <rect x="252" y="96" width="206" height="34" rx="8" fill="#F1F5F9"/>
+              <rect x="264" y="108" width="166" height="9" rx="4.5" fill="#64748B"/>
+              <rect x="284" y="142" width="180" height="44" rx="8" fill="#ECFEFF" stroke="#BAE6FD"/>
+              <rect x="298" y="154" width="146" height="8" rx="4" fill="#0E7490"/>
+              <rect x="298" y="168" width="110" height="8" rx="4" fill="#0E7490" fill-opacity="0.65"/>
+
+              <!-- Bottom Label Strip -->
+              <rect x="38" y="252" width="444" height="40" rx="8" fill="#163A5C"/>
+              <text x="58" y="277" fill="#E2E8F0" font-family="DM Sans, sans-serif" font-size="14" font-weight="600">Academics · Exams · Placements · Hostel · Library · Admin</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="overview-strip">
+          <div class="overview-item">
+            <div class="overview-value">8 Departments</div>
+            <div class="overview-label">Click any category card to insert and ask a sample question.</div>
+          </div>
+          <div class="overview-item">
+            <div class="overview-value">Verified Knowledge</div>
+            <div class="overview-label">Responses stay strictly grounded without inventing dates or rules.</div>
+          </div>
+          <div class="overview-item">
+            <div class="overview-value">Natural Language</div>
+            <div class="overview-label">Ask follow-up questions in plain English throughout your session.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 Clickable Helpdesk Categories -->
+    <section class="section-block" id="categories">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Campus Helpdesk Categories</h2>
+            <p class="section-subtitle">Select any university service below to automatically ask a sample question in the helpdesk chat.</p>
+          </div>
+        </div>
+
+        <div class="categories-grid" id="categories-grid">
+          <button type="button" class="category-card" data-category="Academics" data-question="Whom should I contact for academic problems?">
+            <span class="category-icon-box" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+            </span>
+            <h3 class="category-title">Academics</h3>
+            <p class="category-desc">Course guidance, faculty advisor support, and academic assistance.</p>
+            <span class="category-action">Ask sample question &rarr;</span>
+          </button>
+
+          <button type="button" class="category-card" data-category="Attendance" data-question="What is the rule regarding minimum attendance requirements?">
+            <span class="category-icon-box" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <polyline points="16 11 18 13 22 9"></polyline>
+              </svg>
+            </span>
+            <h3 class="category-title">Attendance</h3>
+            <p class="category-desc">Minimum attendance rules prescribed by university regulations.</p>
+            <span class="category-action">Ask sample question &rarr;</span>
+          </button>
+
+          <button type="button" class="category-card" data-category="Examinations" data-question="Where can I find the examination timetable?">
+            <span class="category-icon-box" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </span>
+            <h3 class="category-title">Examinations</h3>
+            <p class="category-desc">Exam timetables, schedules, and official assessment notifications.</p>
+            <span class="category-action">Ask sample question &rarr;</span>
+          </button>
+
+          <button type="button" class="category-card" data-category="Placements" data-question="Whom should I contact for placement training?">
+            <span class="category-icon-box" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </span>
+            <h3 class="category-title">Placements</h3>
+            <p class="category-desc">Placement drives, career training, and recruitment inquiries.</p>
+            <span class="category-action">Ask sample question &rarr;</span>
+          </button>
+
+          <button type="button" class="category-card" data-category="Library" data-question="How can I access library resources and timings?">
+            <span class="category-icon-box" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </span>
+            <h3 class="category-title">Library</h3>
+            <p class="category-desc">Library resource access, campus reading timings, and rules.</p>
+            <span class="category-action">Ask sample question &rarr;</span>
+          </button>
+
+          <button type="button" class="category-card" data-category="Hostel" data-question="How can I raise a hostel complaint?">
+            <span class="category-icon-box" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </span>
+            <h3 class="category-title">Hostel</h3>
+            <p class="category-desc">Hostel facilities support and submitting accommodation complaints.</p>
+            <span class="category-action">Ask sample question &rarr;</span>
+          </button>
+
+          <button type="button" class="category-card" data-category="Administration" data-question="Whom should I contact for student certificates and records?">
+            <span class="category-icon-box" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </span>
+            <h3 class="category-title">Administration</h3>
+            <p class="category-desc">Bonafide certificates, transcripts, and official student records.</p>
+            <span class="category-action">Ask sample question &rarr;</span>
+          </button>
+
+          <button type="button" class="category-card" data-category="University Events" data-question="Where are university event announcements shared?">
+            <span class="category-icon-box" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+              </svg>
+            </span>
+            <h3 class="category-title">University Events</h3>
+            <p class="category-desc">Campus fests, workshops, and official university announcements.</p>
+            <span class="category-action">Ask sample question &rarr;</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Campus Helpdesk Chat -->
+    <section class="section-block" id="assistant">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Campus Helpdesk</h2>
+            <p class="section-subtitle">Ask a question or choose a suggested query to search the local university information.</p>
+          </div>
+        </div>
+
+        <div class="chat-layout">
+          <!-- Suggested Questions Sidebar -->
+          <aside class="chat-sidebar" aria-label="Suggested Questions">
+            <div>
+              <h3 class="sidebar-heading">Suggested Questions</h3>
+              <p class="sidebar-note">Click any question to send it immediately to the assistant.</p>
+            </div>
+
+            <div class="suggested-list">
+              <button type="button" class="suggested-btn" data-suggested="Whom should I contact for academic problems?">
+                Whom should I contact for academic problems?
+              </button>
+              <button type="button" class="suggested-btn" data-suggested="Where can I find the examination timetable?">
+                Where can I find the examination timetable?
+              </button>
+              <button type="button" class="suggested-btn" data-suggested="Whom should I contact for placement training?">
+                Whom should I contact for placement training?
+              </button>
+              <button type="button" class="suggested-btn" data-suggested="How can I raise a hostel complaint?">
+                How can I raise a hostel complaint?
+              </button>
+              <button type="button" class="suggested-btn" data-suggested="Where is the fee counter?">
+                Where is the fee counter?
+              </button>
+              <button type="button" class="suggested-btn" data-suggested="Where is the main library and law library?">
+                Where is the main library and law library?
+              </button>
+              <button type="button" class="suggested-btn" data-suggested="Where can I get my student certificates?">
+                Where can I get my student certificates?
+              </button>
+              <button type="button" class="suggested-btn" data-suggested="What is the exact date of my next examination?">
+                What is the exact date of my next examination?
+              </button>
+            </div>
+
+            <hr class="sidebar-divider" />
+
+            <div>
+              <p class="sidebar-tip-title">Accuracy Policy</p>
+              <p class="sidebar-note">
+                If a specific date, fee, or detail is not in the university knowledge base, the assistant will clearly inform you instead of guessing.
+              </p>
+            </div>
+          </aside>
+
+          <!-- Main Chat Panel -->
+          <div class="chat-panel">
+            <div class="chat-panel-header">
+              <div class="chat-assistant-info">
+                <div class="assistant-avatar" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="assistant-title">Presidency Campus Assistant</div>
+                  <div class="assistant-subtitle">Local answers &middot; Verified University Knowledge</div>
+                </div>
+              </div>
+
+              <button type="button" class="btn-clear" id="clear-chat-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+                  <path d="M10 11v6M14 11v6"></path>
+                </svg>
+                <span>Clear Chat</span>
+              </button>
+            </div>
+
+            <div class="chat-messages" id="chat-messages" aria-live="polite" aria-label="Chat conversation history"></div>
+
+            <form class="chat-input-form" id="chat-form">
+              <input
+                type="text"
+                id="question-input"
+                class="chat-input"
+                placeholder="Ask a question about academics, exams, placements, hostel, library..."
+                autocomplete="off"
+                aria-label="Enter your campus question"
+              />
+              <button type="submit" id="send-btn" class="chat-send-btn">
+                <span>Send</span>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Official Knowledge Base Reference -->
+    <section class="section-block" id="knowledge-base">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Official Helpdesk Knowledge Base</h2>
+            <p class="section-subtitle">Answers are based on these verified Presidency University guidelines.</p>
+          </div>
+        </div>
+
+        <div class="kb-grid">
+          <div class="kb-item">
+            <h3 class="kb-item-title">Academics</h3>
+            <p class="kb-item-text">Students may contact their faculty advisor for academic-related assistance.</p>
+          </div>
+          <div class="kb-item">
+            <h3 class="kb-item-title">Attendance</h3>
+            <p class="kb-item-text">Students should follow the minimum attendance requirement prescribed by university regulations.</p>
+          </div>
+          <div class="kb-item">
+            <h3 class="kb-item-title">Examinations</h3>
+            <p class="kb-item-text">Examination timetables and notifications are published through official university channels.</p>
+          </div>
+          <div class="kb-item">
+            <h3 class="kb-item-title">Placements</h3>
+            <p class="kb-item-text">Students may contact the Placement Department for training and placement-related information.</p>
+          </div>
+          <div class="kb-item">
+            <h3 class="kb-item-title">Library</h3>
+            <p class="kb-item-text">Students may access library resources according to the library's timings and regulations.</p>
+          </div>
+          <div class="kb-item">
+            <h3 class="kb-item-title">Hostel</h3>
+            <p class="kb-item-text">Hostel-related complaints should be submitted to the Hostel Administration.</p>
+          </div>
+          <div class="kb-item">
+            <h3 class="kb-item-title">Administration</h3>
+            <p class="kb-item-text">Students may contact the respective administrative office for certificates and student records.</p>
+          </div>
+          <div class="kb-item">
+            <h3 class="kb-item-title">University Events</h3>
+            <p class="kb-item-text">University event announcements are shared through official communication channels.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>Presidency University &middot; Local Campus Helpdesk</span>
+      <span>Responses are grounded strictly in supplied university guidance.</span>
+    </div>
+  </footer>
+
+  <script>
+    const API_URL = "/ask";
+
+    const WELCOME_MESSAGE =
+      "Hello! Welcome to the Presidency University Campus Helpdesk. Ask me anything about academics, attendance, examinations, placements, library services, hostel facilities, administration, or university events.";
+
+    const chatMessages = document.getElementById("chat-messages");
+    const chatForm = document.getElementById("chat-form");
+    const questionInput = document.getElementById("question-input");
+    const sendBtn = document.getElementById("send-btn");
+    const clearChatBtn = document.getElementById("clear-chat-btn");
+    const headerAskBtn = document.getElementById("header-ask-btn");
+    const heroStartBtn = document.getElementById("hero-start-btn");
+    const categoryCards = document.querySelectorAll(".category-card");
+    const suggestedBtns = document.querySelectorAll(".suggested-btn");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileDrawer = document.getElementById("mobile-drawer");
+    const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+    let isRequestPending = false;
+
+    function getCurrentTimestamp() {
+      return new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    }
+
+    function scrollToBottom() {
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function escapeHtml(text) {
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    // Formats plain text and simple markdown (**bold**, bullet lines) safely
+    function formatMessageContent(rawText) {
+      const safe = escapeHtml(rawText);
+      const lines = safe.split(/\r?\n/);
+      let html = "";
+      let inList = false;
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        const boldFormatted = trimmed.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+
+        if (/^[-*]\s+/.test(boldFormatted)) {
+          if (!inList) {
+            html += "<ul>";
+            inList = true;
+          }
+          html += "<li>" + boldFormatted.replace(/^[-*]\s+/, "") + "</li>";
+        } else {
+          if (inList) {
+            html += "</ul>";
+            inList = false;
+          }
+          if (boldFormatted.length > 0) {
+            html += "<p>" + boldFormatted + "</p>";
+          }
+        }
+      }
+
+      if (inList) {
+        html += "</ul>";
+      }
+
+      return html || "<p>" + safe + "</p>";
+    }
+
+    function appendMessage(role, text, options = {}) {
+      const row = document.createElement("div");
+      row.className = "message-row " + role + (options.isError ? " error" : "");
+
+      const sender = document.createElement("div");
+      sender.className = "message-sender";
+      sender.textContent = role === "user" ? "Student" : (options.isError ? "Connection Error" : "Campus Assistant");
+
+      const bubble = document.createElement("div");
+      bubble.className = "message-bubble";
+      bubble.innerHTML = formatMessageContent(text);
+
+      const meta = document.createElement("div");
+      meta.className = "message-meta";
+
+      const timeSpan = document.createElement("span");
+      timeSpan.textContent = getCurrentTimestamp();
+      meta.appendChild(timeSpan);
+
+      if (options.isError && options.retryQuestion) {
+        const retryBtn = document.createElement("button");
+        retryBtn.type = "button";
+        retryBtn.className = "retry-btn";
+        retryBtn.textContent = "Retry";
+        retryBtn.addEventListener("click", function () {
+          row.remove();
+          sendQuestion(options.retryQuestion, { skipUserBubble: true });
+        });
+        meta.appendChild(retryBtn);
+      }
+
+      row.appendChild(sender);
+      row.appendChild(bubble);
+      row.appendChild(meta);
+
+      chatMessages.appendChild(row);
+      scrollToBottom();
+    }
+
+    function showLoadingIndicator() {
+      const row = document.createElement("div");
+      row.className = "message-row ai";
+      row.id = "loading-row";
+
+      const sender = document.createElement("div");
+      sender.className = "message-sender";
+      sender.textContent = "Campus Assistant";
+
+      const bubble = document.createElement("div");
+      bubble.className = "message-bubble";
+      bubble.innerHTML = `
+        <div class="typing-indicator" role="status" aria-label="Generating response">
+          <span class="typing-dot"></span>
+          <span class="typing-dot"></span>
+          <span class="typing-dot"></span>
+          <span class="typing-label">Thinking...</span>
+        </div>
+      `;
+
+      row.appendChild(sender);
+      row.appendChild(bubble);
+      chatMessages.appendChild(row);
+      scrollToBottom();
+    }
+
+    function removeLoadingIndicator() {
+      const loadingRow = document.getElementById("loading-row");
+      if (loadingRow) {
+        loadingRow.remove();
+      }
+    }
+
+    function setBusyState(busy) {
+      isRequestPending = busy;
+      sendBtn.disabled = busy;
+      questionInput.disabled = busy;
+    }
+
+    async function sendQuestion(questionText, config = {}) {
+      const trimmedQuestion = questionText.trim();
+      if (!trimmedQuestion || isRequestPending) {
+        return;
+      }
+
+      if (!config.skipUserBubble) {
+        appendMessage("user", trimmedQuestion);
+      }
+
+      questionInput.value = "";
+      setBusyState(true);
+      showLoadingIndicator();
+
+      try {
+        const res = await fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ question: trimmedQuestion })
+        });
+
+        const data = await res.json().catch(() => ({}));
+        removeLoadingIndicator();
+
+        if (!res.ok) {
+          const errorDetail = data.error || "The server returned status " + res.status + ".";
+          appendMessage("ai", errorDetail, {
+            isError: true,
+            retryQuestion: trimmedQuestion
+          });
+          return;
+        }
+
+        // Supports common Flask JSON keys: answer, response, reply, or message
+        const assistantReply = data.answer || data.response || data.reply || data.message;
+
+        if (!assistantReply) {
+          appendMessage("ai", "Received an unexpected response format from the backend.", {
+            isError: true,
+            retryQuestion: trimmedQuestion
+          });
+          return;
+        }
+
+        appendMessage("ai", assistantReply);
+      } catch (err) {
+        removeLoadingIndicator();
+        appendMessage(
+          "ai",
+          "Could not connect to the backend at " + API_URL + ". Please make sure the application server is running.",
+          {
+            isError: true,
+            retryQuestion: trimmedQuestion
+          }
+        );
+      } finally {
+        setBusyState(false);
+        questionInput.focus();
+      }
+    }
+
+    function initializeChat() {
+      chatMessages.innerHTML = "";
+      appendMessage("ai", WELCOME_MESSAGE);
+    }
+
+    function scrollToChatAndFocus() {
+      const assistantSection = document.getElementById("assistant");
+      assistantSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => {
+        questionInput.focus();
+      }, 350);
+    }
+
+    // Form submit (handles both Send button click and Enter key)
+    chatForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      sendQuestion(questionInput.value);
+    });
+
+    // Clear Chat button
+    clearChatBtn.addEventListener("click", function () {
+      if (isRequestPending) {
+        return;
+      }
+      categoryCards.forEach((card) => card.classList.remove("active"));
+      initializeChat();
+      questionInput.value = "";
+      questionInput.focus();
+    });
+
+    // Header & Hero quick-jump buttons
+    headerAskBtn.addEventListener("click", scrollToChatAndFocus);
+    heroStartBtn.addEventListener("click", scrollToChatAndFocus);
+
+    // Clickable Category Cards
+    categoryCards.forEach((card) => {
+      card.addEventListener("click", function () {
+        if (isRequestPending) {
+          return;
+        }
+        categoryCards.forEach((c) => c.classList.remove("active"));
+        card.classList.add("active");
+
+        const sampleQuestion = card.getAttribute("data-question");
+        document.getElementById("assistant").scrollIntoView({ behavior: "smooth", block: "start" });
+        sendQuestion(sampleQuestion);
+      });
+    });
+
+    // Suggested Questions Buttons
+    suggestedBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        if (isRequestPending) {
+          return;
+        }
+        const suggestedQuestion = btn.getAttribute("data-suggested");
+        sendQuestion(suggestedQuestion);
+      });
+    });
+
+    // Navigation active state on click
+    navLinks.forEach((link) => {
+      link.addEventListener("click", function () {
+        navLinks.forEach((item) => item.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+
+    // Mobile Menu Drawer Toggle
+    mobileMenuBtn.addEventListener("click", function () {
+      const isOpen = mobileDrawer.classList.toggle("open");
+      mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mobileNavLinks.forEach((link) => {
+      link.addEventListener("click", function () {
+        mobileDrawer.classList.remove("open");
+        mobileMenuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // Initialize welcome message on page load
+    initializeChat();
+  </script>
+</body>
+</html>

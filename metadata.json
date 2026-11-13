@@ -1,0 +1,6 @@
+{
+  "name": "Presidency University Campus Helpdesk",
+  "description": "AI-powered campus helpdesk for Presidency University students covering academics, attendance, examinations, placements, library, hostel, administration, and events.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
